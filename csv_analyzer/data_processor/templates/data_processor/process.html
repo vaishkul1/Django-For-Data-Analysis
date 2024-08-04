@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Processing</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Data Processing Results</h1>
+    <h2>First Five Rows</h2>
+    <div>{{ first_five_rows|safe }}</div>
+    <h2>Summary Statistics (Mean, Median, Standard Deviation)</h2>
+    <div>{{ summary_stats|safe }}</div>
+    <h2>Rows and Columns with Missing Values</h2>
+    <div>{{ missing_values|safe }}</div>
+    <p>Columns with missing values: {{ columns_with_missing }}</p>
+    <p>{{ message }}</p>
+    <h2>Here we are handling the data by dropping the missing values.</h2>
+    <div>{{ df_dropped|safe }}</div>
+    <a href="{% url 'index' %}">Back to Home</a>
+  </body>
+</html>

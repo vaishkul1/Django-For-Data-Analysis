@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSV Analyzer</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Welcome! please upload your CSV file here</h1>
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="toCenter">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }}
+
+        <div class="uploadbutton">
+          <button type="submit">Upload the File</button>
+        </div>
+      </form>
+      <br />
+      <br />
+    </div>
+    {% if request.session.data %}
+    <div class="buttons">
+      <button onclick="location.href='{% url 'process_data' %}'">
+        Data Processing
+      </button>
+      <button onclick="location.href='{% url 'visualize_data' %}'">
+        Visualize
+      </button>
+    </div>
+
+    {% endif %}
+  </body>
+</html>

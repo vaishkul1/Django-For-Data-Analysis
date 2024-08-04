@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Visualization</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Data Visualization</h1>
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Histograms" />
+    <br />
+    <a href="{% url 'index' %}">Back to Home</a>
+  </body>
+</html>
